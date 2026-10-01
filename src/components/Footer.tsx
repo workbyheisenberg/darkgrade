@@ -19,7 +19,7 @@ export default function Footer({
   };
 
   return (
-    <footer className="pt-[180px] sm:pt-[220px] pb-16 page-gutters">
+    <footer className="relative z-10 pt-[180px] sm:pt-[220px] pb-16 page-gutters">
       {/* 4-column grid */}
       <div className="w-full border-t border-[rgba(239,233,221,0.12)] pt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
         {/* Column 1: Brand Wordmark & Tagline */}

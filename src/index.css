@@ -69,7 +69,7 @@
 .bg-stack {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   background-color: var(--bg);
   background-image: url('/bg/poster.jpg');
   background-size: cover;
@@ -79,10 +79,15 @@
 
 #bg-video {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  /* dimensions are swapped so the 90deg-rotated video still covers the viewport */
+  width: 100vh;
+  height: 100vw;
   object-fit: cover;
+  /* rotate right 90 degrees (clockwise) */
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center center;
 }
 
 @media (max-width: 768px) {

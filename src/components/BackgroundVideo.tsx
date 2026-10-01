@@ -117,16 +117,25 @@ export default function BackgroundVideo({ onVideoReady }: BackgroundVideoProps) 
     };
   }, [onVideoReady]);
 
-  const VIDEO_URL =
-    'https://v1.pinimg.com/videos/mc/720p/32/22/b6/3222b64b7d66ea2efafe1ecaecb3f3ca.mp4';
+  // ---------------------------------------------------------------------------
+  // BACKGROUND VIDEO
+  // Place the video at: public/bg/background-video.mp4
+  // It is rotated 90deg clockwise (see #bg-video in src/index.css) so a
+  // portrait-shot video fills the landscape viewport.
+  // The container is `position: fixed`, so the background never moves on scroll.
+  // ---------------------------------------------------------------------------
+  const BG_SOURCES: { src: string; type: string }[] = [
+    { src: '/bg/background-video.mp4', type: 'video/mp4' },
+  ];
+  const BG_POSTER = '/bg/poster.jpg';
 
   return (
     <div
       ref={stackRef}
-      className="bg-stack fixed inset-0 w-screen h-screen min-h-screen z-[-1] overflow-hidden bg-[#070605]"
+      className="bg-stack fixed inset-0 w-screen h-screen min-h-screen z-0 overflow-hidden bg-[#070605]"
       aria-hidden="true"
       style={{
-        backgroundImage: 'url(/bg/poster.jpg)',
+        backgroundImage: `url(${BG_POSTER})`,
       }}
     >
       {!usePosterOnly && (
@@ -138,11 +147,12 @@ export default function BackgroundVideo({ onVideoReady }: BackgroundVideoProps) 
           loop
           playsInline
           preload="auto"
-          poster="/bg/poster.jpg"
-          className="absolute inset-0 w-full h-full object-cover"
+          poster={BG_POSTER}
+          className="block"
         >
-          <source src={VIDEO_URL} type="video/mp4" />
-          <source src="/bg/loop.mp4" type="video/mp4" />
+          {BG_SOURCES.map((source) => (
+            <source key={source.src} src={source.src} type={source.type} />
+          ))}
         </video>
       )}
       <div className="bg-scrim" />
