@@ -1,0 +1,6 @@
+{
+  "name": "DARKGRADE",
+  "description": "Dark, cinematic, single-page product landing site for DARKGRADE. Local-first AI for creative professionals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

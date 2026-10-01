@@ -1,11 +1,12 @@
-<div align="center">
+# DARKGRADE
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Dark, cinematic, single-page product landing site for DARKGRADE. Local-first AI for creative professionals.
 
-  <h1>Built with AI Studio</h2>
+## Background Video
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+The fixed, 100vh full-screen background video mechanism is configured with:
+- Active video source: `https://v1.pinimg.com/videos/mc/720p/32/22/b6/3222b64b7d66ea2efafe1ecaecb3f3ca.mp4`
+- Local high-speed cache: `/public/bg/loop.mp4`
+- Frame-matched fallback poster: `/public/bg/poster.jpg`
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
-
-</div>
+The background is fixed to 100vh, automatically loops, scales responsively (`object-fit: cover`), and darkens via scroll-driven `--scrim` opacity (0.15 in hero up to ~0.74 as you scroll) to ensure perfect text contrast and legibility.

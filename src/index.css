@@ -1,0 +1,276 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg: #070605;
+    --cream: #EFE9DD;
+    --muted: rgba(239, 233, 221, 0.55);
+    --dim: rgba(239, 233, 221, 0.32);
+    --gold: #F3DFA8;
+    --gold-deep: #D9C28A;
+    --hairline: rgba(239, 233, 221, 0.12);
+    --scrim: 0.15;
+  }
+
+  html {
+    background-color: var(--bg);
+    color: var(--cream);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* Hide native scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--cream);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Typography styles */
+.font-display {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.font-mono-tag {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+.font-pixel {
+  font-family: 'Silkscreen', 'Departure Mono', monospace;
+  letter-spacing: 0.15em;
+}
+
+/* Gold glow accent words */
+.gold-glow {
+  color: var(--gold);
+  text-shadow: 0 0 36px rgba(243, 223, 168, 0.45), 0 0 8px rgba(243, 223, 168, 0.25);
+}
+
+.gold-glow-subtle {
+  text-shadow: 0 0 20px rgba(243, 223, 168, 0.35);
+}
+
+/* Background stack as spec */
+.bg-stack {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--bg);
+  background-image: url('/bg/poster.jpg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+#bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  #bg-video {
+    object-position: 60% center;
+  }
+}
+
+.bg-scrim {
+  position: absolute;
+  inset: 0;
+  background: #070605;
+  opacity: var(--scrim, 0.15);
+  pointer-events: none;
+  transition: opacity 0.05s ease-out;
+}
+
+.bg-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 60% 40%, transparent 40%, rgba(7, 6, 5, 0.75) 100%),
+    linear-gradient(to bottom, rgba(7, 6, 5, 0.55) 0%, transparent 18%, transparent 70%, rgba(7, 6, 5, 0.9) 100%);
+}
+
+/* Custom scrollbar */
+.custom-scrollbar-track {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 100vh;
+  z-index: 9990;
+  pointer-events: none;
+}
+
+.custom-scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px;
+  background-color: var(--cream);
+  opacity: 0.35;
+  border-radius: 9999px;
+  transform-origin: top;
+}
+
+/* Custom cursor */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background-color: var(--gold);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease, transform 0.05s linear;
+  box-shadow: 0 0 10px rgba(243, 223, 168, 0.6);
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  border: 1px solid rgba(239, 233, 221, 0.5);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              background-color 0.25s ease,
+              opacity 0.2s ease;
+}
+
+.custom-cursor-ring.cursor-hover {
+  width: 54px;
+  height: 54px;
+  border-color: rgba(239, 233, 221, 0.9);
+  background-color: rgba(239, 233, 221, 0.04);
+}
+
+.custom-cursor-ring.cursor-project {
+  width: 58px;
+  height: 58px;
+  border-color: var(--gold);
+  background-color: rgba(243, 223, 168, 0.12);
+  box-shadow: 0 0 20px rgba(243, 223, 168, 0.2);
+}
+
+/* Gutter layout token */
+.page-gutters {
+  padding-left: clamp(24px, 3vw, 40px);
+  padding-right: clamp(24px, 3vw, 40px);
+}
+
+/* Hairline dividers */
+.border-hairline {
+  border-color: var(--hairline);
+}
+
+.border-t-hairline {
+  border-top-color: var(--hairline);
+}
+
+.border-b-hairline {
+  border-bottom-color: var(--hairline);
+}
+
+.border-r-hairline {
+  border-right-color: var(--hairline);
+}
+
+/* Pills */
+.pill-primary {
+  border-radius: 9999px;
+  background-color: var(--cream);
+  color: var(--bg);
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill-primary:hover {
+  background-color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.pill-secondary {
+  border-radius: 9999px;
+  background-color: transparent;
+  border: 1px solid var(--hairline);
+  color: var(--cream);
+  font-weight: 400;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill-secondary:hover {
+  border-color: rgba(239, 233, 221, 0.4);
+  background-color: rgba(239, 233, 221, 0.05);
+}
+
+/* Marquee infinite keyframe animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Vertical scroll line indicator */
+@keyframes scrollLine {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  50.1% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+.animate-scroll-line {
+  animation: scrollLine 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
